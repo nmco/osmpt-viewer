@@ -19,6 +19,7 @@
                 center.transform(new OpenLayers.Projection("EPSG:4326"), mapa.getProjectionObject());
                 mapa.setCenter(center, 17);
 
+
                 mapa.addControl(new OpenLayers.Control.Permalink());
                 mapa.addControl(new OpenLayers.Control.LayerSwitcher());
                 mapa.addControl(new OpenLayers.Control.ScaleLine());
@@ -29,6 +30,23 @@
                     displayProjection: new OpenLayers.Projection("EPSG:4326"),
                     emptyString: ''
                 }));
+
+                var geolocate = new OpenLayers.Control.Geolocate({
+                    bind: false,
+                    geolocationOptions: {
+                        enableHighAccuracy: false,
+                        maximumAge: 0,
+                        timeout: 7000
+                    }
+                });
+                mapa.addControl(geolocate);
+                geolocate.events.register("locationupdated",geolocate,function(e) {
+                    var center = new OpenLayers.LonLat(e.point.x, e.point.y);
+                    //center.transform(new OpenLayers.Projection("EPSG:4326"), mapa.getProjectionObject());
+                    mapa.setCenter(center, 17);
+                    geolocate.deactivate();
+                });
+                geolocate.activate();
             }
         </script>
 
