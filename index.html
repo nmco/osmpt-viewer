@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+
+        <script src="http://openlayers.org/api/OpenLayers.js"></script>
+        <script type="text/javascript">
+            var mapa, layer;
+
+            function init() {
+                mapa = new OpenLayers.Map('mapa');
+                mapa.addLayer(new OpenLayers.Layer.OSM());
+                var center = new OpenLayers.LonLat(-8.443692, 40.574310);
+                center.transform(new OpenLayers.Projection("EPSG:4326"), mapa.getProjectionObject());
+                mapa.setCenter(center, 17);
+            }
+        </script>
+
+        <style>
+            html,body{
+                padding: 0;
+                margin: 0;
+            }
+        </style>
+
+    </head>
+    <body onload="init()">
+        <div id="mapa"></div>
+    </body>
+</html>
