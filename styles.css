@@ -1,4 +1,5 @@
 html,body {
+	font-family: 'Roboto', Verdana, sans-serif;
 	padding: 0;
 	margin: 0;
 }
@@ -36,6 +37,7 @@ html,body {
 }
 
 #nav ul li a {
+	font-family: 'Roboto', Verdana, sans-serif;
 	float: left;
 	line-height: 2em;
 	text-align: center;
@@ -51,7 +53,7 @@ html,body {
 	text-decoration: underline;
 }
 
-#bottom_bar{
+#bottom_bar {
 	z-index: 1001;
 	background-image: -moz-linear-gradient(top, #ccc, #d0c6d1);
 	background-image: -ms-linear-gradient(top, #ccc, #d0c6d1);
@@ -64,12 +66,15 @@ html,body {
 	position: fixed;
 	bottom: 0;
 	left: 0;
+	-moz-box-shadow: 0px 2px 8px #515151;
+	-webkit-box-shadow: 0px 2px 8px #515151;
+	box-shadow: 0px 2px 8px #515151;
 }
 
 
 /* CSS - OpenLayers personalization*/
 
-div.olControlZoom{
+div.olControlZoom {
 	position: absolute !important;
 	left: 25px !important;
 	top: 25px !important;
@@ -80,7 +85,6 @@ div.olControlZoom{
 	-webkit-box-shadow: 0px 2px 8px #515151;
 	box-shadow: 0px 2px 8px #515151;
 	background-color: white !important;
-
 	height: 2em !important;
 	width: 2em !important;
 }
@@ -96,7 +100,7 @@ div.olControlZoom a {
 	background-image: linear-gradient(top, #ffffff, #d0c6d1) !important;
 }
 
-div.olControlAttribution,div.olControlPermalink{
+div.olControlAttribution,div.olControlPermalink {
 	position: fixed;
 	bottom: 0;
 	right: 5;
@@ -109,5 +113,6 @@ div.olControlPermalink {
 div.olControlMousePosition {
 	position: fixed;
 	bottom: 0;
-	left: 0;
+	left: 5;
+	font-family: 'Roboto', Verdana, sans-serif;
 }
