@@ -50,3 +50,33 @@ html,body {
 #box ul li a:hover {
 	text-decoration: underline;
 }
+
+
+/* CSS - OpenLayers personalization*/
+
+div.olControlZoom{
+	position: absolute !important;
+	left: 25px !important;
+	top: 25px !important;
+}
+
+.olControlZoomIn, .olControlZoomOut {
+	-moz-box-shadow: 0px 2px 8px #515151;
+	-webkit-box-shadow: 0px 2px 8px #515151;
+	box-shadow: 0px 2px 8px #515151;
+	background-color: white !important;
+
+	height: 2em !important;
+	width: 2em !important;
+}
+
+div.olControlZoom a {
+	color: black !important;
+	line-height: 2em !important;
+	background-image: -moz-linear-gradient(top, #ffffff, #d0c6d1) !important;
+	background-image: -ms-linear-gradient(top, #ffffff, #d0c6d1) !important;
+	background-image: -o-linear-gradient(top, #ffffff, #d0c6d1) !important;
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#ffffff), to(#d0c6d1)) !important;
+	background-image: -webkit-linear-gradient(top, #ffffff, #d0c6d1) !important;
+	background-image: linear-gradient(top, #ffffff, #d0c6d1) !important;
+}
