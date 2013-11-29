@@ -3,7 +3,7 @@ html,body {
 	margin: 0;
 }
 
-#box {
+#nav {
 	position: absolute;
 	z-index: 2000;
 	top: 0;
@@ -25,17 +25,17 @@ html,body {
 	background-image: linear-gradient(top, #ffffff, #d0c6d1);
 }
 
-#box ul {
+#nav ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
 
-#box ul li {
+#nav ul li {
 	display: inline;
 }
 
-#box ul li a {
+#nav ul li a {
 	float: left;
 	line-height: 2em;
 	text-align: center;
@@ -47,8 +47,23 @@ html,body {
 	border-right: 1px solid #ccc;
 }
 
-#box ul li a:hover {
+#nav ul li a:hover {
 	text-decoration: underline;
+}
+
+#bottom_bar{
+	z-index: 1001;
+	background-image: -moz-linear-gradient(top, #ccc, #d0c6d1);
+	background-image: -ms-linear-gradient(top, #ccc, #d0c6d1);
+	background-image: -o-linear-gradient(top, #ccc, #d0c6d1);
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#ccc), to(#d0c6d1));
+	background-image: -webkit-linear-gradient(top, #ccc, #d0c6d1);
+	background-image: linear-gradient(top, #ccc, #d0c6d1);
+	height: 20px;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
 }
 
 
@@ -79,4 +94,20 @@ div.olControlZoom a {
 	background-image: -webkit-gradient(linear, center top, center bottom, from(#ffffff), to(#d0c6d1)) !important;
 	background-image: -webkit-linear-gradient(top, #ffffff, #d0c6d1) !important;
 	background-image: linear-gradient(top, #ffffff, #d0c6d1) !important;
+}
+
+div.olControlAttribution,div.olControlPermalink{
+	position: fixed;
+	bottom: 0;
+	right: 5;
+}
+
+div.olControlPermalink {
+	right: 200px;
+}
+
+div.olControlMousePosition {
+	position: fixed;
+	bottom: 0;
+	left: 0;
 }
