@@ -116,3 +116,10 @@ div.olControlMousePosition {
 	left: 5;
 	font-family: 'Roboto', Verdana, sans-serif;
 }
+
+.olControlBtnArea {
+    position: absolute;
+    height: 18px;
+    width : 18px;
+    background: url('http://s11.postimg.org/s3u0s4pjj/marker.png') no-repeat center;
+}
