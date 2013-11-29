@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
 
-        <script src="http://openlayers.org/api/OpenLayers.js"></script>
+        <script src="http://openlayers.org/api/OpenLayers.js"></script> 
         <script type="text/javascript">
             var mapa, layer;
 
@@ -14,6 +14,15 @@
                 var center = new OpenLayers.LonLat(-8.443692, 40.574310);
                 center.transform(new OpenLayers.Projection("EPSG:4326"), mapa.getProjectionObject());
                 mapa.setCenter(center, 17);
+
+
+                mapa.addControl(new OpenLayers.Control.MousePosition({
+                    prefix: 'Coordenadas WGS84: ',
+                    separator: ' | ',
+                    numDigits: 5,
+                    displayProjection: new OpenLayers.Projection("EPSG:4326"),
+                    emptyString: ''
+                }));
             }
         </script>
 
