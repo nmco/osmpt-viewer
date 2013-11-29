@@ -1,0 +1,52 @@
+html,body {
+	padding: 0;
+	margin: 0;
+}
+
+#box {
+	position: absolute;
+	z-index: 2000;
+	top: 0;
+	left: 100%;
+	margin-top: 25px;
+	margin-right: 25px;
+	margin-left: -40em;
+	-moz-box-shadow: 0px 2px 8px #515151;
+	-webkit-box-shadow: 0px 2px 8px #515151;
+	box-shadow: 0px 2px 8px #515151;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background-image: -moz-linear-gradient(top, #ffffff, #d0c6d1);
+	background-image: -ms-linear-gradient(top, #ffffff, #d0c6d1);
+	background-image: -o-linear-gradient(top, #ffffff, #d0c6d1);
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#ffffff), to(#d0c6d1));
+	background-image: -webkit-linear-gradient(top, #ffffff, #d0c6d1);
+	background-image: linear-gradient(top, #ffffff, #d0c6d1);
+}
+
+#box ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#box ul li {
+	display: inline;
+}
+
+#box ul li a {
+	float: left;
+	line-height: 2em;
+	text-align: center;
+	width: 8em;
+	height: 2em;
+	color: black;
+	text-decoration: none;
+	padding: 0.2em 0.6em;
+	border-right: 1px solid #ccc;
+}
+
+#box ul li a:hover {
+	text-decoration: underline;
+}
