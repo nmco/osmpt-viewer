@@ -17,6 +17,7 @@
                 mapa.setCenter(center, 17);
 
                 mapa.addControl(new OpenLayers.Control.Permalink());
+                mapa.addControl(new OpenLayers.Control.LayerSwitcher());
                 mapa.addControl(new OpenLayers.Control.MousePosition({
                     prefix: 'Coordenadas WGS84: ',
                     separator: ' | ',
