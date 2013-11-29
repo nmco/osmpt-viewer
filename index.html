@@ -11,11 +11,12 @@
             function init() {
                 mapa = new OpenLayers.Map('mapa');
                 mapa.addLayer(new OpenLayers.Layer.OSM());
+
                 var center = new OpenLayers.LonLat(-8.443692, 40.574310);
                 center.transform(new OpenLayers.Projection("EPSG:4326"), mapa.getProjectionObject());
                 mapa.setCenter(center, 17);
 
-
+                mapa.addControl(new OpenLayers.Control.Permalink());
                 mapa.addControl(new OpenLayers.Control.MousePosition({
                     prefix: 'Coordenadas WGS84: ',
                     separator: ' | ',
