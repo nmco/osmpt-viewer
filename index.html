@@ -9,14 +9,30 @@
 
         <script src="http://openlayers.org/api/OpenLayers.js"></script> 
         <script type="text/javascript">
-            var mapa, layer;
+            var mapa;
+
+            /** projections */
+            var geographic = new OpenLayers.Projection("EPSG:4326");
+            var mercator = new OpenLayers.Projection("EPSG:900913");
+            var portuguese = new OpenLayers.Projection("EPSG:3763");
 
             function init() {
-                mapa = new OpenLayers.Map('mapa');
+                mapa = new OpenLayers.Map('mapa',{projection: mercator});
                 mapa.addLayer(new OpenLayers.Layer.OSM());
 
+                addWMSOverlay( "Estrada primaria", "http://openstreetmap.pt:8080/geoserver/openstreetmap.pt/wms",
+                        'openstreetmap.pt:primaria', portuguese );
+                addWMSOverlay( "Autoestrada", "http://openstreetmap.pt:8080/geoserver/openstreetmap.pt/wms",
+                        'openstreetmap.pt:autoestrada', portuguese );
+                addWMSOverlay( "Estrada secundaria", "http://openstreetmap.pt:8080/geoserver/openstreetmap.pt/wms",
+                        'openstreetmap.pt:secundaria', portuguese );
+                addWMSOverlay( "Itinerario", "http://openstreetmap.pt:8080/geoserver/openstreetmap.pt/wms",
+                        'openstreetmap.pt:itinerario', portuguese );
+                addWMSOverlay( "Vias", "http://openstreetmap.pt:8080/geoserver/openstreetmap.pt/wms",
+                        'openstreetmap.pt:vias', portuguese );
+
                 var center = new OpenLayers.LonLat(-8.443692, 40.574310);
-                center.transform(new OpenLayers.Projection("EPSG:4326"), mapa.getProjectionObject());
+                center.transform(new OpenLayers.Projection(geographic), mapa.getProjectionObject());
                 mapa.setCenter(center, 17);
 
                 mapa.addControl(new OpenLayers.Control.Permalink());
@@ -25,7 +41,7 @@
                     prefix: 'Coordenadas WGS84: ',
                     separator: ' | ',
                     numDigits: 5,
-                    displayProjection: new OpenLayers.Projection("EPSG:4326"),
+                    displayProjection: new OpenLayers.Projection(geographic),
                     emptyString: ''
                 }));
 
@@ -84,6 +100,21 @@
 
                 mapa.addControl(panel);
             }
+
+            function addWMSOverlay( name, url, layer, projection ){
+                mapa.addLayer(new OpenLayers.Layer.WMS( name,
+                        url,
+                        {
+                            layers: layer,
+                            transparent: true
+                        },
+                        {
+                            isBaseLayer: false,
+                            visibility: false,
+                            projection : new OpenLayers.Projection(projection)
+                        })
+                );
+            }
         </script>
 
         <style>
@@ -97,14 +128,14 @@
     <body onload="init()">
         <div id="mapa"></div>
 
-        <div id="nav">
+        <!--div id="nav">
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">News</a></li>
                 <li><a href="#">Contact</a></li>
                 <li><a href="#">About</a></li>
             </ul>
-        </div>
+        </div-->
         
         <div id="bottom_bar"></div>
     </body>
