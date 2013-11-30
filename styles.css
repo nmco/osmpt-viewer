@@ -117,9 +117,19 @@ div.olControlMousePosition {
 	font-family: 'Roboto', Verdana, sans-serif;
 }
 
-.olControlBtnArea {
-    position: absolute;
-    height: 18px;
-    width : 18px;
-    background: url('http://s11.postimg.org/s3u0s4pjj/marker.png') no-repeat center;
+.olControlMeasureToolbar div {
+    display:block;
+    width:  28px;
+    height: 28px;
+    top: 300px;
+    left: 6px;
+    position: relative;
+}
+.olControlMeasureToolbar .olControlAreaItemActive {
+    background-image: url("img/areaOn.png");
+    background-repeat: no-repeat;
+}
+.olControlMeasureToolbar .olControlAreaItemInactive {
+    background-image: url("img/areaOff.png");
+    background-repeat: no-repeat;
 }

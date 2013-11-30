@@ -20,6 +20,9 @@
                 mapa = new OpenLayers.Map('mapa',{projection: mercator});
                 mapa.addLayer(new OpenLayers.Layer.OSM());
 
+                // layer for editable features
+                var vlayer = new OpenLayers.Layer.Vector( "Editable" );
+
                 addWMSOverlay( "Estrada primaria", "http://openstreetmap.pt:8080/geoserver/openstreetmap.pt/wms",
                         'openstreetmap.pt:primaria', portuguese );
                 addWMSOverlay( "Autoestrada", "http://openstreetmap.pt:8080/geoserver/openstreetmap.pt/wms",
@@ -35,6 +38,8 @@
                 center.transform(new OpenLayers.Projection(geographic), mapa.getProjectionObject());
                 mapa.setCenter(center, 17);
 
+                /** controls */
+                mapa.addControl(new OpenLayers.Control.ScaleLine());
                 mapa.addControl(new OpenLayers.Control.Permalink());
                 mapa.addControl(new OpenLayers.Control.LayerSwitcher());
                 mapa.addControl(new OpenLayers.Control.MousePosition({
@@ -53,14 +58,17 @@
                         timeout: 7000
                     }
                 });
-                mapa.addControl(geolocate);
                 geolocate.events.register("locationupdated",geolocate,function(e) {
                     var center = new OpenLayers.LonLat(e.point.x, e.point.y);
-                    //center.transform(new OpenLayers.Projection("EPSG:4326"), mapa.getProjectionObject());
                     mapa.setCenter(center, 17);
                     geolocate.deactivate();
                 });
+
+                mapa.addControl(geolocate);
                 geolocate.activate();
+
+                mapa.addControl(new OpenLayers.Control.EditingToolbar(vlayer));
+                mapa.addLayer(vlayer);
 
                 var distancia = new OpenLayers.Control.Measure(OpenLayers.Handler.Path, {
                     eventListeners : {
@@ -78,23 +86,24 @@
                     }
                 });
 
+                var btnArea = new OpenLayers.Control.Button({
+                    displayClass: 'olControlAreaItemActive',
+                    title: "click it to measure area",
+                    id: 'btnArea',
+                    trigger: clickbtnArea,
+                    type: OpenLayers.Control.TYPE_TOGGLE
+                });
+
+                function clickbtnArea(){
+                    area.activate();
+                }
+
                 var panel = new OpenLayers.Control.Panel({
-                    createControlMarkup: function(control) {
-                        var button = document.createElement('button'),
-                                iconSpan = document.createElement('span'),
-                                textSpan = document.createElement('span');
-                        iconSpan.innerHTML = '&nbsp;';
-                        button.appendChild(iconSpan);
-                        if (control.text) {
-                            textSpan.innerHTML = control.text;
-                        }
-                        button.appendChild(textSpan);
-                        return button;
-                    }
+                    displayClass: 'olControlMeasureToolbar'
                 });
 
                 panel.addControls([
-                    area,
+                    btnArea,
                     distancia
                 ]);
 
